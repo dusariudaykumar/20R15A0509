@@ -10,7 +10,7 @@ const controller = async (req, res) => {
       const response = await axios.post(urls[i]);
       responseArray.push(response.data.numbers);
     }
-    const result = [...new Set(responseArray.flat())];
+    const result = [...new Set(responseArray.flat())].sort((a, b) => a - b);
     console.log(result);
     res.json({ result });
   } catch (error) {
