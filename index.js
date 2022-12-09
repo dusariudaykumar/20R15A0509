@@ -3,7 +3,6 @@ const app = express();
 const axios = require("axios");
 const controller = async (req, res) => {
   const urls = req.query.url;
-  //   const urlsArray = urls.split(",");
   try {
     const responseArray = [];
     for (let i = 0; i < urls.length; i++) {
@@ -11,7 +10,9 @@ const controller = async (req, res) => {
       const response = await axios.post(urls[i]);
       responseArray.push(response.data.numbers);
     }
-    console.log(responseArray);
+    const result = [...new Set(responseArray.flat())];
+    console.log(result);
+    res.json({ result });
   } catch (error) {
     console.log(error);
   }
