@@ -17,5 +17,5 @@ const controller = async (req, res) => {
     console.log(error);
   }
 };
-app.all("/", controller);
+app.get("/numbers", controller);
 app.listen(process.env.PORT || 3000);
